@@ -28,6 +28,8 @@ export class Server {
     async start() {
 
         //Middlewares
+        this.app.use(express.json())
+        this.app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
 
         //* Public Folder
         this.app.use(express.static(this.publicPath));
@@ -43,7 +45,7 @@ export class Server {
 
 
         this.app.listen(3000, () => {
-            console.log(`Server running on port http://localhost:${3000}`)
+            console.log(`Server running on http://localhost:${3000}`)
         })
     }
 }
